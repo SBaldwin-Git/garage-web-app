@@ -1,0 +1,3 @@
+Part 1 – Garage Web App
+
+For the main part of the take home technical task, we’d like to give you the opportunity to show what you’ve learned in your bootcamp by inviting you to create a small web app. This web app should enable a repair garage to manage the customer vehicles they currently hold, providing a user interface to add vehicles, list vehicles, mark vehicles as repaired and delete vehicles. Vehicles should have the properties ‘Make’, ‘Model’, ‘Registration Number’ and ‘Notes’, all of which should be required except for ‘Notes’.  The frontend for this application should be built in React, and the rest of any tech stack you decide to use is entirely up to you. This task should take around 4 hours to complete.
