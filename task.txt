@@ -9,13 +9,13 @@ Summary:
 Functionality
 
 1. Add vehicles
-2. List vehicles
+2. List vehicles ✔️
 3. Mark vehicles as repaired
 4. Delete vehicles
 
-Vehicle Properties (Implemented as an object?)
+Vehicle Properties (Implemented as an object?) ✔️
 
-1. Make (Required) <String>
-2. Model (Required) <String>
-3. Registration Number (Required) <String>
-4. Notes (Optional) <String>
+1. Make (Required) <String> ✔️
+2. Model (Required) <String> ✔️
+3. Registration Number (Required) <String> ✔️
+4. Notes (Optional) <String> ✔️
