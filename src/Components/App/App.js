@@ -3,6 +3,7 @@ import VehicleList from "../VehicleList/VehicleList";
 import { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import AddButton from "../Buttons/AddButton";
 
 function App() {
   class Vehicle {
@@ -28,10 +29,11 @@ function App() {
   return (
     <div className="App">
       <Container maxWidth="xl">
-        <Typography variant="h1" color="initial" sx={{mb:10}}>
+        <Typography variant="h2" color="initial" sx={{mb:5, mt:5}}>
           Garage Web App
         </Typography>
         <VehicleList vehicles={vehicles} />
+        <AddButton />
       </Container>
     </div>
   );

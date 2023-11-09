@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,11 +6,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import DeleteButton from "../Buttons/DeleteButton";
 
-function VehicleList({vehicles}) {
+function VehicleList({ vehicles }) {
   return (
     <TableContainer component={Paper}>
-      <Table>
+      <Table aria-label="sticky table">
         <TableHead>
           <TableRow>
             <TableCell sx={{ fontWeight: "bold", fontSize: 20 }}>
@@ -25,6 +26,9 @@ function VehicleList({vehicles}) {
             <TableCell sx={{ fontWeight: "bold", fontSize: 20 }}>
               Notes
             </TableCell>
+            <TableCell sx={{ fontWeight: "bold", fontSize: 20 }}>
+              {/* placeholder */}
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -34,6 +38,9 @@ function VehicleList({vehicles}) {
               <TableCell>{vehicle.model}</TableCell>
               <TableCell>{vehicle.registration}</TableCell>
               <TableCell>{vehicle.notes}</TableCell>
+              <TableCell>
+                <DeleteButton />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -42,4 +49,4 @@ function VehicleList({vehicles}) {
   );
 }
 
-export default VehicleList
+export default VehicleList;
