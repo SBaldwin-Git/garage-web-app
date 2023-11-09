@@ -10,7 +10,7 @@ import DeleteButton from "../Buttons/DeleteButton";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
-function VehicleList({ vehicles }) {
+function VehicleList({ vehicles , handleDelete}) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="sticky table">
@@ -56,7 +56,9 @@ function VehicleList({ vehicles }) {
               <TableCell>{vehicle.registration}</TableCell>
               <TableCell>{vehicle.notes}</TableCell>
               <TableCell>
-                <DeleteButton />
+                <DeleteButton
+                  onClick={() => handleDelete(vehicle.registration)}
+                />
               </TableCell>
             </TableRow>
           ))}
