@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <Container maxWidth="xl">
-        <Typography variant="h2" color="initial" sx={{mb:5, mt:5}}>
+        <Typography variant="h2" color="initial" sx={{pb:5, pt:5}}>
           Garage Web App
         </Typography>
         <VehicleList vehicles={vehicles} />
