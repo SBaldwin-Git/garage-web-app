@@ -5,6 +5,7 @@ import TableCell from "@mui/material/TableCell";
 function Vehicle({vehicle}) {
   return (
     <TableRow>
+      <TableCell>{vehicle.repaired ? "Yes" : "No"}</TableCell>
       <TableCell>{vehicle.make}</TableCell>
       <TableCell>{vehicle.model}</TableCell>
       <TableCell>{vehicle.registration}</TableCell>

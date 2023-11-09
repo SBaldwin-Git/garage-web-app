@@ -7,7 +7,9 @@ import AddButton from "../Buttons/AddButton";
 
 function App() {
   class Vehicle {
-    constructor(make, model, registration, notes) {
+    constructor(repaired, make, model, registration, notes)
+    {
+      this.repaired = repaired;
       this.make = make;
       this.model = model;
       this.registration = registration;
@@ -15,16 +17,19 @@ function App() {
     }
   }
 
-  const vehicleArray = [
-    new Vehicle("Toyota", "Camry", "ABC123", "Great condition"),
-    new Vehicle("Honda", "Civic", "XYZ789", ""),
-    new Vehicle("Ford", "Fusion", "DEF456", "Minor scratches on the side"),
-    new Vehicle("Chevrolet", "Malibu", "GHI789", ""),
-    new Vehicle("Nissan", "Altima", "JKL012", "Needs oil change"),
-  ];
+const vehicleArray = [
+  new Vehicle(true, "Toyota", "Camry", "ABC123", "Great condition"),
+  new Vehicle(true, "Honda", "Civic", "XYZ789", ""),
+  new Vehicle(false, "Ford", "Fusion", "DEF456", "Minor scratches on the side"),
+  new Vehicle(false, "Chevrolet", "Malibu", "GHI789", ""),
+  new Vehicle(false, "Nissan", "Altima", "JKL012", "Needs oil change"),
+];
 
-  const [vehicles, setVehicles] = useState(vehicleArray);
+
+  const [vehicles, setVehicles] = useState([...vehicleArray]);
   const [inputValue, setInputValue] = useState("");
+
+  console.log(vehicleArray)
 
   return (
     <div className="App">
