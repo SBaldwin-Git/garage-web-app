@@ -13,10 +13,18 @@ function VehicleList({vehicles}) {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Make</TableCell>
-            <TableCell>Model</TableCell>
-            <TableCell>Registration</TableCell>
-            <TableCell>Notes</TableCell>
+            <TableCell sx={{ fontWeight: "bold", fontSize: 20 }}>
+              Make
+            </TableCell>
+            <TableCell sx={{ fontWeight: "bold", fontSize: 20 }}>
+              Model
+            </TableCell>
+            <TableCell sx={{ fontWeight: "bold", fontSize: 20 }}>
+              Registration
+            </TableCell>
+            <TableCell sx={{ fontWeight: "bold", fontSize: 20 }}>
+              Notes
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -31,7 +39,7 @@ function VehicleList({vehicles}) {
         </TableBody>
       </Table>
     </TableContainer>
-  )
+  );
 }
 
 export default VehicleList
