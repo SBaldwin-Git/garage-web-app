@@ -17,14 +17,6 @@ class Vehicle {
   }
 }
 
-// const vehicleArray = [
-//   new Vehicle(true, "Toyota", "Camry", "ABC123", "Great condition"),
-//   new Vehicle(true, "Honda", "Civic", "XYZ789", ""),
-//   new Vehicle(false, "Ford", "Fusion", "DEF456", "Minor scratches on the side"),
-//   new Vehicle(false, "Chevrolet", "Malibu", "GHI789", ""),
-//   new Vehicle(false, "Nissan", "Altima", "JKL012", "Needs oil change"),
-// ];
-
 function App() {
   const [vehicles, setVehicles] = useState([]);
   //create a dialog form using mui, starting with boolean value for if the form is open or not
@@ -65,70 +57,49 @@ function App() {
     setOpen(false);
   };
 
-const handleDelete = async (registration) => {
-  try {
-    // Delete the vehicle from the database
-    const { error } = await supabase
-      .from("vehicles")
-      .delete()
-      .eq("registration", registration);
+  const handleDelete = async (registration) => {
+    try {
+      // Delete the vehicle from the database
+      const { error } = await supabase
+        .from("vehicles")
+        .delete()
+        .eq("registration", registration);
 
-    if (error) {
-      console.error("Error deleting from the database:", error);
-      return;
+      if (error) {
+        console.error("Error deleting from the database:", error);
+        return;
+      }
+
+      if (!error) {
+        // Create a new array without the deleted vehicle
+        const updatedVehicles = vehicles.filter(
+          (vehicle) => vehicle.registration !== registration
+        );
+
+        // Update the vehicles state with the modified array
+        setVehicles(updatedVehicles);
+      }
+    } catch (error) {
+      console.error("Error handling deletion:", error);
     }
-
-    if (!error) {
-      // Create a new array without the deleted vehicle
-      const updatedVehicles = vehicles.filter(
-        (vehicle) => vehicle.registration !== registration
-      );
-
-      // Update the vehicles state with the modified array
-      setVehicles(updatedVehicles);
-    }
-  } catch (error) {
-    console.error("Error handling deletion:", error);
-  }
-};
-
+  };
 
   const handleRepairedChange = (registration, repaired) => {
-    // Find the index of the vehicle with the specified registration
-    // const index = vehicles.findIndex(
-    //   (vehicle) => vehicle.registration === registration
-    // );
-
-    // if (index !== -1) {
-    //   // Create a copy of the vehicles array
-    //   const updatedVehicles = [...vehicles];
-
-    //   // Update the 'repaired' property of the specified vehicle
-    //   updatedVehicles[index] = {
-    //     ...updatedVehicles[index],
-    //     repaired: repaired,
-    //   };
-
-    // Refactor to work with supabase
-
     // Update the vehicle in the database
-    const updateVehicle = async () =>
-    {
+    const updateVehicle = async () => {
       const { error } = await supabase
         .from("vehicles")
         .update({ repaired: repaired })
         .eq("registration", registration);
-      
+
       if (error) {
         console.error("Error updating the database:", error);
         return;
       }
-    
 
       if (!error) {
         // Create a new array with the updated vehicle
-        const updatedVehicles = vehicles.map((vehicle) =>
-        {
+        const updatedVehicles = vehicles.map((vehicle) => {
           if (vehicle.registration === registration) {
             return {
               ...vehicle,
@@ -138,7 +109,6 @@ const handleDelete = async (registration) => {
             return vehicle;
           }
         });
-
 
         // Update the vehicles state with the modified array
         setVehicles(updatedVehicles);

@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import supabase from "../../Config/supabaseClient";
 
 class Vehicle {
   constructor(repaired, make, model, registration, notes) {
@@ -43,9 +44,24 @@ function AddVehicleForm({ open, handleClose, setVehicles }) {
     setNotes(event.target.value);
   };
 
-  const handleSubmit = () => {
-    const newVehicle = new Vehicle(false, make, model, registration, notes);
-    setVehicles((prev) => [...prev, newVehicle]);
+  const handleSubmit = async () => {
+    const { data, error } = await supabase.from("vehicles").insert([
+      {
+        make: make,
+        model: model,
+        registration: registration,
+        notes: notes,
+      },
+    ]);
+    if (error) {
+      console.log("error", error);
+    }
+
+    if (!error) {
+      const newVehicle = new Vehicle(false, make, model, registration, notes);
+
+      setVehicles((prev) => [...prev, newVehicle]);
+    }
 
     setMake("");
     setModel("");
@@ -117,7 +133,9 @@ function AddVehicleForm({ open, handleClose, setVehicles }) {
         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
       >
         <Button
-          disabled={ make.length === 0 || model.length === 0 || registration.length === 0 }
+          disabled={
+            make.length === 0 || model.length === 0 || registration.length === 0
+          }
           onClick={handleSubmit}
           variant="contained"
           sx={{ m: 2, mb: 4, width: 200, fontSize: 20, height: 50 }}
