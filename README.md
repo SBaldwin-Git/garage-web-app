@@ -5,6 +5,9 @@ This repo is a garage web app designed to  enable a repair garage to manage the 
 ## Created Using
 
 - JavaScript
+- HTML
+- CSS
+- Node.js
 - React
 - MaterialUI
 
