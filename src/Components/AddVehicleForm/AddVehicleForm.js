@@ -56,7 +56,7 @@ function AddVehicleForm({ open, handleClose, setVehicles }) {
   };
 
   return (
-    <Dialog open={open} onClose={handleClose} fullWidth="sm">
+    <Dialog open={open} onClose={handleClose} fullWidth>
       <DialogTitle>Add New Vehicle</DialogTitle>
 
       <IconButton
