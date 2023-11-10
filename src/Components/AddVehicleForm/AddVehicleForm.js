@@ -104,6 +104,7 @@ function AddVehicleForm({ open, handleClose, setVehicles }) {
         />
         <DialogContentText>Notes:</DialogContentText>
         <TextField
+          fullWidth
           id="notes"
           variant="outlined" // Change variant to outlined
           multiline
@@ -116,6 +117,7 @@ function AddVehicleForm({ open, handleClose, setVehicles }) {
         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
       >
         <Button
+          disabled={ make.length === 0 || model.length === 0 || registration.length === 0 }
           onClick={handleSubmit}
           variant="contained"
           sx={{ m: 2, mb: 4, width: 200, fontSize: 20, height: 50 }}

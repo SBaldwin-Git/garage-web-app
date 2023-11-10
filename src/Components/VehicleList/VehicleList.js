@@ -10,7 +10,7 @@ import DeleteButton from "../Buttons/DeleteButton";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
-function VehicleList({ vehicles , handleDelete}) {
+function VehicleList({ vehicles , handleDelete, handleRepairedChange}) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="sticky table">
@@ -41,6 +41,12 @@ function VehicleList({ vehicles , handleDelete}) {
             <TableRow key={vehicle.registration}>
               <TableCell>
                 <Select
+                  onChange={(event) =>
+                    handleRepairedChange(
+                      vehicle.registration,
+                      event.target.value
+                    )
+                  }
                   value={vehicle.repaired ? true : false}
                   labelId="repaired"
                   id="repaired"

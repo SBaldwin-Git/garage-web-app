@@ -37,12 +37,35 @@ function App() {
     setOpen(false);
   };
 
-    const handleDelete = (registration) => {
-      const updatedVehicles = vehicles.filter(
-        (vehicle) => vehicle.registration !== registration
-      );
+  const handleDelete = (registration) => {
+    const updatedVehicles = vehicles.filter(
+      (vehicle) => vehicle.registration !== registration
+    );
+    setVehicles(updatedVehicles);
+  };
+
+  const handleRepairedChange = (registration, repaired) => {
+    // Find the index of the vehicle with the specified registration
+    const index = vehicles.findIndex(
+      (vehicle) => vehicle.registration === registration
+    );
+
+    if (index !== -1) {
+      // Create a copy of the vehicles array
+      const updatedVehicles = [...vehicles];
+
+      // Update the 'repaired' property of the specified vehicle
+      updatedVehicles[index] = {
+        ...updatedVehicles[index],
+        repaired: repaired,
+      };
+
+      console.log(updatedVehicles);
+
+      // Update the vehicles state with the modified array
       setVehicles(updatedVehicles);
-    };
+    }
+  };
 
   return (
     <div className="App">
@@ -50,7 +73,11 @@ function App() {
         <Typography variant="h2" color="initial" sx={{ pb: 5, pt: 5 }}>
           Garage Web App
         </Typography>
-        <VehicleList vehicles={vehicles} handleDelete={handleDelete} />
+        <VehicleList
+          vehicles={vehicles}
+          handleDelete={handleDelete}
+          handleRepairedChange={handleRepairedChange}
+        />
         <AddButton handleOpen={handleOpen} />
         <AddVehicleForm
           open={open}
