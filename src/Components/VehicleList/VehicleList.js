@@ -10,7 +10,11 @@ import DeleteButton from "../Buttons/DeleteButton";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
-function VehicleList({ vehicles , handleDelete, handleRepairedChange}) {
+function VehicleList({ vehicles, handleDelete, handleRepairedChange })
+{
+  
+  console.log("Received vehicles:", vehicles);
+
   return (
     <TableContainer component={Paper}>
       <Table aria-label="sticky table">
