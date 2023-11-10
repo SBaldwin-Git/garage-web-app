@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Button,
-  TextField,
-} from "@mui/material";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogActions from "@mui/material/DialogActions";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import supabase from "../../Config/supabaseClient";
 
+// Class to represent the structure of a vehicle
 class Vehicle {
   constructor(repaired, make, model, registration, notes) {
     this.repaired = repaired;
@@ -23,11 +22,13 @@ class Vehicle {
 }
 
 function AddVehicleForm({ open, handleClose, setVehicles }) {
+  // State variables to store form input values
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
   const [registration, setRegistration] = useState("");
   const [notes, setNotes] = useState("");
 
+  // Event handlers for input changes
   const handleMakeChange = (event) => {
     setMake(event.target.value);
   };
@@ -44,6 +45,7 @@ function AddVehicleForm({ open, handleClose, setVehicles }) {
     setNotes(event.target.value);
   };
 
+  // Function to handle form submission
   const handleSubmit = async () => {
     const { data, error } = await supabase.from("vehicles").insert([
       {
@@ -53,21 +55,23 @@ function AddVehicleForm({ open, handleClose, setVehicles }) {
         notes: notes,
       },
     ]);
+
+    // Handling errors from the database
     if (error) {
       console.log("error", error);
     }
 
+    // If no error, update the state with the new vehicle
     if (!error) {
       const newVehicle = new Vehicle(false, make, model, registration, notes);
-
       setVehicles((prev) => [...prev, newVehicle]);
     }
 
+    // Resetting form input values and closing the form
     setMake("");
     setModel("");
     setRegistration("");
     setNotes("");
-
     handleClose();
   };
 
@@ -93,7 +97,7 @@ function AddVehicleForm({ open, handleClose, setVehicles }) {
           fullWidth
           required
           id="make"
-          variant="outlined" // Change variant to outlined
+          variant="outlined"
           value={make}
           onChange={handleMakeChange}
           sx={{ pb: 2 }}
@@ -103,7 +107,7 @@ function AddVehicleForm({ open, handleClose, setVehicles }) {
           fullWidth
           required
           id="model"
-          variant="outlined" // Change variant to outlined
+          variant="outlined"
           value={model}
           onChange={handleModelChange}
           sx={{ pb: 2 }}
@@ -113,7 +117,7 @@ function AddVehicleForm({ open, handleClose, setVehicles }) {
           fullWidth
           required
           id="registration"
-          variant="outlined" // Change variant to outlined
+          variant="outlined"
           value={registration}
           onChange={handleRegistrationChange}
           sx={{ pb: 2 }}
@@ -122,7 +126,7 @@ function AddVehicleForm({ open, handleClose, setVehicles }) {
         <TextField
           fullWidth
           id="notes"
-          variant="outlined" // Change variant to outlined
+          variant="outlined"
           multiline
           maxRows={4}
           value={notes}
