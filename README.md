@@ -6,4 +6,8 @@ This repo is a garage web app designed to  enable a repair garage to manage the 
 
 - JavaScript
 - React
-- CSS
+- MaterialUI
+
+## Live site linked below 👇
+
+https://garage-web-app.netlify.app/
