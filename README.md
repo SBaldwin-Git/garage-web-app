@@ -2,6 +2,8 @@
 
 This repo is a garage web app designed to  enable a repair garage to manage the customer vehicles they currently hold, providing a user interface to add vehicles, list vehicles, mark vehicles as repaired and delete vehicles.
 
+There is no seperate backend for this project, instead the data is stored in a Supabase database.
+
 ## Created Using
 
 - JavaScript
@@ -10,6 +12,7 @@ This repo is a garage web app designed to  enable a repair garage to manage the 
 - Node.js
 - React
 - MaterialUI
+- Supabase
 
 ## Live site linked below 👇
 
